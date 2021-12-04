@@ -26,14 +26,17 @@ public class ClientsTest {
 
     @Test
     void testListaUnicoCliente_ClienteEhListadoComTodasAsInformacoes() {
+
+        int id = 2;
+
         RestAssured.given() //Dado - Given
                 .log().all() //loga toda a request - solicitação (entrada) - mostrará o cabeçalho da solicitação
                 .when() //Quando - When - REQUEST
-                .get("/1") //Faz a solicitação em si, método/verbo GET passando como parâmetro a URL/URI a ser acessada
+                .get("/" + id) //Faz a solicitação em si, método/verbo GET passando como parâmetro a URL/URI a ser acessada
                 .then() //Então - RESPONSE
                 .log().all()  // loga toda a response - resposta
                 .statusCode(200)  //verifica se o resultado da request é HTTP 200 OK
-                .body("id", is(1));
+                .body("id", is(id));
     }
 
 
